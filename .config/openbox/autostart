@@ -3,7 +3,7 @@ xset s off
 xset s noblank
 xset -dpms
 
-# Start sleep timer
+# Start sleep timer. Comment this line if you want the screen to stay on permanently
 ~/sleep-timer &
 
 # Start Chromium in kiosk mode
