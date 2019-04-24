@@ -32,10 +32,16 @@ tail -n 1 rpi-kiosk/.xinitrc-snippet >> .xinitrc
 chmod +x ~/sleep-timer
 ```
 
-Enable console autologin with the `raspi-config` tool (Boot Options > Desktop / CLI > Console Autologin). Alternatively, you can run it noninteractively:
+Enable console autologin with the `raspi-config` tool (Boot Options > Desktop / CLI > Console Autologin). If you're setting this up from root for a user without sudo, this method won't work. Instead, run the script noninteractively:
 
 ```bash
-sudo raspi-config nonint do_boot_behavior B2
+SUDO_USER=some_user raspi-config nonint do_boot_behavior B2
+```
+
+If you're using a new user and not the default `pi`, add it to the `video` group:
+
+```bash
+sudo usermod -a -G video some_user
 ```
 
 ## How it works
