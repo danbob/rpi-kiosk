@@ -1,0 +1,2 @@
+# Copy /etc/X11/xinit/xinitrc to ~/.xinitrc and append this line
+exec openbox-session

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+timeout=$((10*60*1000)) # 10 minutes
+triggered=false
+
+while true
+do
+  remaining=$((timeout - $(xssstate -i))) # xssstate available in suckless-tools package
+  if [ $remaining -le 0 ]; then
+    # After 10 minutes, switch to second desktop (zero based) and turn off screen
+    $triggered || wmctrl -s 1 && xset dpms force off
+    triggered=true
+  else
+    triggered=false
+    sleep $(($remaining/1000))
+  fi
+done

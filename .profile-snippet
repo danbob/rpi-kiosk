@@ -1,0 +1,2 @@
+# Append this line to .profile
+startx -- -nocursor
